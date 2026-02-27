@@ -931,7 +931,7 @@ export default function Home() {
             <div>
               <h4 className="font-bold text-white mb-5">Service Area</h4>
               <p className="text-sm leading-relaxed" style={{ color: "rgba(255,255,255,0.55)" }}>
-                Greater Metro Area including Houston, Dallas, Austin, and surrounding communities within a 50-mile radius.
+                Orange, Seminole, Osceola, Polk, Lake & Volusia Counties — including Orlando, Kissimmee, Sanford, Apopka, Clermont, and surrounding Central Florida communities.
               </p>
               <div className="mt-4 inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs border"
                 style={{
