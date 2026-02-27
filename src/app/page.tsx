@@ -264,6 +264,7 @@ export default function Home() {
             <a href="#why-us" className="hover:text-white transition-colors">Why Us</a>
             <a href="#gallery" className="hover:text-white transition-colors">Gallery</a>
             <a href="#reviews" className="hover:text-white transition-colors">Reviews</a>
+            <a href="#service-area" className="hover:text-white transition-colors">Service Area</a>
             <a href="#booking" className="hover:text-white transition-colors">Book Service</a>
           </div>
           <a href="tel:+14074584032"
@@ -514,6 +515,126 @@ export default function Home() {
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* ── SERVICE AREA ────────────────────────────────────────────────────── */}
+      <section id="service-area" className="py-28 px-6"
+        style={{ background: "linear-gradient(180deg, transparent, rgba(46,16,101,0.18), transparent)" }}>
+        <div className="max-w-7xl mx-auto">
+
+          {/* Header */}
+          <div className="text-center mb-16">
+            <p className="text-sm font-semibold uppercase tracking-widest mb-3" style={{ color: "#a78bfa" }}>Where We Work</p>
+            <h2 className="text-4xl md:text-5xl font-black text-white mb-4">Serving Central Florida</h2>
+            <p className="text-lg max-w-2xl mx-auto" style={{ color: "rgba(255,255,255,0.5)" }}>
+              PurpleAir Services covers the entire Central Florida region — from the coast to the heartland.
+              If you're in the area, we've got you covered.
+            </p>
+          </div>
+
+          {/* County cards */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mb-12">
+            {[
+              {
+                county: "Orange County",
+                cities: ["Orlando", "Winter Park", "Apopka", "Ocoee", "Windermere", "Winter Garden", "Maitland", "Belle Isle"],
+                color: "rgba(124,58,237,0.12)",
+                accent: "#a78bfa",
+              },
+              {
+                county: "Seminole County",
+                cities: ["Sanford", "Altamonte Springs", "Casselberry", "Longwood", "Oviedo", "Lake Mary", "Winter Springs"],
+                color: "rgba(59,130,246,0.1)",
+                accent: "#93c5fd",
+              },
+              {
+                county: "Osceola County",
+                cities: ["Kissimmee", "St. Cloud", "Celebration", "Poinciana", "Harmony", "Buenaventura Lakes"],
+                color: "rgba(124,58,237,0.12)",
+                accent: "#a78bfa",
+              },
+              {
+                county: "Polk County",
+                cities: ["Lakeland", "Haines City", "Davenport", "Winter Haven", "Auburndale", "Lake Alfred"],
+                color: "rgba(59,130,246,0.1)",
+                accent: "#93c5fd",
+              },
+              {
+                county: "Lake County",
+                cities: ["Clermont", "Leesburg", "Tavares", "Mount Dora", "Eustis", "Groveland", "Minneola"],
+                color: "rgba(124,58,237,0.12)",
+                accent: "#a78bfa",
+              },
+              {
+                county: "Volusia County",
+                cities: ["Deltona", "DeLand", "Ormond Beach", "Daytona Beach", "Debary", "Orange City"],
+                color: "rgba(59,130,246,0.1)",
+                accent: "#93c5fd",
+              },
+            ].map((area) => (
+              <div key={area.county}
+                className="rounded-2xl border p-7 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_30px_rgba(167,139,250,0.15)]"
+                style={{
+                  background: area.color,
+                  borderColor: "rgba(167,139,250,0.15)",
+                }}>
+                {/* County header */}
+                <div className="flex items-center gap-3 mb-5">
+                  <div className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0"
+                    style={{ background: "rgba(167,139,250,0.15)" }}>
+                    <svg viewBox="0 0 24 24" fill="none" stroke={area.accent} strokeWidth="1.8" className="w-4 h-4">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
+                    </svg>
+                  </div>
+                  <h3 className="font-black text-white text-lg">{area.county}</h3>
+                </div>
+
+                {/* Divider */}
+                <div className="h-px mb-5" style={{ background: "rgba(167,139,250,0.12)" }} />
+
+                {/* Cities */}
+                <div className="flex flex-wrap gap-2">
+                  {area.cities.map((city) => (
+                    <span key={city}
+                      className="text-xs font-medium px-3 py-1.5 rounded-full border"
+                      style={{
+                        background: "rgba(255,255,255,0.04)",
+                        borderColor: "rgba(167,139,250,0.15)",
+                        color: "rgba(255,255,255,0.65)",
+                      }}>
+                      {city}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Bottom CTA strip */}
+          <div className="rounded-2xl border px-8 py-6 flex flex-col sm:flex-row items-center justify-between gap-4"
+            style={{
+              background: "rgba(124,58,237,0.08)",
+              borderColor: "rgba(167,139,250,0.2)",
+            }}>
+            <div className="flex items-center gap-3">
+              <span className="w-2.5 h-2.5 rounded-full bg-green-400 animate-pulse flex-shrink-0" />
+              <p className="text-white font-semibold">
+                Don't see your city?{" "}
+                <span style={{ color: "rgba(255,255,255,0.55)" }} className="font-normal">
+                  Call us — we likely service your area.
+                </span>
+              </p>
+            </div>
+            <a href="tel:+14074584032"
+              className="flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-bold text-white whitespace-nowrap transition-all hover:scale-105"
+              style={{ background: "linear-gradient(135deg,#7c3aed,#3b82f6)" }}>
+              <PhoneIcon />
+              (407) 458-4032
+            </a>
+          </div>
+
         </div>
       </section>
 
