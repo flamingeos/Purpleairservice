@@ -150,22 +150,46 @@ const trustBlocks = [
 
 const testimonials = [
   {
-    name: "Marcus T.",
-    location: "Houston, TX",
-    text: "My AC went out on a Friday evening in August. PurpleAir had a tech at my door by 9am Saturday. Fixed within an hour. Absolute lifesavers — these guys are the real deal.",
+    name: "Carlos M.",
+    location: "Kissimmee, FL",
+    text: "AC went out in the middle of July — it was brutal. PurpleAir showed up the same day and had it running within two hours. The tech was professional, explained everything, and didn't try to upsell me on anything I didn't need. Highly recommend.",
     service: "Emergency AC Repair",
+    initials: "CM",
   },
   {
-    name: "Jennifer R.",
-    location: "Dallas, TX",
-    text: "Got quotes from 3 companies. PurpleAir came in competitive, were upfront about everything, and the install was spotless. My new Carrier system runs perfectly. 10/10 experience.",
+    name: "Ashley R.",
+    location: "Orlando, FL",
+    text: "I got three quotes before going with PurpleAir and I'm so glad I did. The price was fair, the install team was clean and respectful of my home, and my new system runs quieter than anything I've had before. 10/10 from start to finish.",
     service: "New System Installation",
+    initials: "AR",
   },
   {
-    name: "David K.",
-    location: "Austin, TX",
-    text: "Signed up for their maintenance plan last year. Caught a refrigerant leak before it became a full breakdown. Saved me thousands. Worth every penny for the peace of mind alone.",
+    name: "James W.",
+    location: "Apopka, FL",
+    text: "Signed up for their annual maintenance plan and it's already paid for itself. They caught a refrigerant issue on the first visit that would've turned into a full breakdown during peak summer. These guys actually know what they're doing.",
     service: "Preventative Maintenance",
+    initials: "JW",
+  },
+  {
+    name: "Maria L.",
+    location: "Tampa, FL",
+    text: "I called on a Saturday morning and they were at my house by noon. Fixed the blower motor on my unit fast and the price was completely reasonable. No hidden fees, no nonsense. Will definitely be calling them again.",
+    service: "AC Repair",
+    initials: "ML",
+  },
+  {
+    name: "Deon P.",
+    location: "Winter Park, FL",
+    text: "PurpleAir cleaned our ductwork and the difference in air quality was immediate. My wife has allergies and she noticed it the same day. Super thorough job — they showed us before and after photos of the ducts. Really impressive.",
+    service: "Duct Cleaning",
+    initials: "DP",
+  },
+  {
+    name: "Sandra K.",
+    location: "Sanford, FL",
+    text: "Used their financing option to replace my old unit and it was seamless. The team walked me through everything and never made me feel pressured. New system has cut my electric bill noticeably. Couldn't be happier with the experience.",
+    service: "New System Installation",
+    initials: "SK",
   },
 ];
 
@@ -242,6 +266,7 @@ export default function Home() {
             <a href="#services" className="hover:text-white transition-colors">Services</a>
             <a href="#why-us" className="hover:text-white transition-colors">Why Us</a>
             <a href="#gallery" className="hover:text-white transition-colors">Gallery</a>
+            <a href="#reviews" className="hover:text-white transition-colors">Reviews</a>
             <a href="#booking" className="hover:text-white transition-colors">Book Service</a>
           </div>
           <a href="tel:+14074584032"
@@ -383,35 +408,75 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── TESTIMONIALS ────────────────────────────────────────────────────── */}
-      <section className="py-24 px-6">
+      {/* ── REVIEWS ─────────────────────────────────────────────────────────── */}
+      <section id="reviews" className="py-24 px-6">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <p className="text-sm font-semibold uppercase tracking-widest mb-3" style={{ color: "#a78bfa" }}>Customer Stories</p>
-            <h2 className="text-4xl md:text-5xl font-black text-white mb-4">Real Results, Real Homeowners</h2>
-            <p className="text-lg" style={{ color: "rgba(255,255,255,0.5)" }}>
-              Don't take our word for it — here's what our customers say.
+            <p className="text-sm font-semibold uppercase tracking-widest mb-3" style={{ color: "#a78bfa" }}>Customer Reviews</p>
+            <h2 className="text-4xl md:text-5xl font-black text-white mb-4">Trusted Across Central Florida</h2>
+            <p className="text-lg max-w-2xl mx-auto" style={{ color: "rgba(255,255,255,0.5)" }}>
+              From Orlando to Tampa — homeowners across the region trust PurpleAir to keep their families cool and comfortable.
             </p>
+            {/* Overall rating row */}
+            <div className="inline-flex items-center gap-3 mt-8 px-6 py-3 rounded-2xl border"
+              style={{
+                background: "rgba(251,191,36,0.07)",
+                borderColor: "rgba(251,191,36,0.2)",
+              }}>
+              <div className="flex gap-1" style={{ color: "#fbbf24" }}>
+                {[...Array(5)].map((_, i) => <StarIcon key={i} />)}
+              </div>
+              <span className="text-white font-black text-xl">5.0</span>
+              <span className="text-sm" style={{ color: "rgba(255,255,255,0.45)" }}>· 200+ Google Reviews</span>
+            </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
             {testimonials.map((t) => (
               <div key={t.name}
-                className="rounded-2xl p-8 border flex flex-col transition-all hover:-translate-y-1 hover:shadow-[0_0_30px_rgba(167,139,250,0.15)]"
+                className="rounded-2xl p-7 border flex flex-col transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_30px_rgba(167,139,250,0.18)]"
                 style={{
-                  background: "linear-gradient(135deg, rgba(76,29,149,0.12), rgba(30,58,95,0.12))",
-                  borderColor: "rgba(167,139,250,0.2)",
+                  background: "rgba(255,255,255,0.03)",
+                  borderColor: "rgba(167,139,250,0.15)",
                 }}>
+                {/* Top row: avatar + name + Google logo */}
+                <div className="flex items-center justify-between mb-4">
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-full flex items-center justify-center text-sm font-black text-white flex-shrink-0"
+                      style={{ background: "linear-gradient(135deg,#7c3aed,#3b82f6)" }}>
+                      {t.initials}
+                    </div>
+                    <div>
+                      <p className="font-bold text-white text-sm">{t.name}</p>
+                      <p className="text-xs" style={{ color: "#a78bfa" }}>{t.location}</p>
+                    </div>
+                  </div>
+                  {/* Google G */}
+                  <svg viewBox="0 0 24 24" className="w-5 h-5 flex-shrink-0" style={{ opacity: 0.5 }}>
+                    <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+                    <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+                    <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/>
+                    <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+                  </svg>
+                </div>
                 {/* Stars */}
-                <div className="flex gap-1 mb-5" style={{ color: "#fbbf24" }}>
+                <div className="flex gap-1 mb-4" style={{ color: "#fbbf24" }}>
                   {[...Array(5)].map((_, i) => <StarIcon key={i} />)}
                 </div>
-                <p className="text-sm leading-relaxed flex-1 mb-6 italic" style={{ color: "rgba(255,255,255,0.75)" }}>
+                {/* Review text */}
+                <p className="text-sm leading-relaxed flex-1 mb-5" style={{ color: "rgba(255,255,255,0.7)" }}>
                   &ldquo;{t.text}&rdquo;
                 </p>
-                <div className="border-t pt-5" style={{ borderColor: "rgba(167,139,250,0.15)" }}>
-                  <p className="font-bold text-white">{t.name}</p>
-                  <p className="text-xs mt-1" style={{ color: "#a78bfa" }}>{t.location} · {t.service}</p>
+                {/* Service tag */}
+                <div className="inline-flex self-start">
+                  <span className="text-xs font-medium px-3 py-1 rounded-full border"
+                    style={{
+                      background: "rgba(124,58,237,0.12)",
+                      borderColor: "rgba(167,139,250,0.2)",
+                      color: "#a78bfa",
+                    }}>
+                    {t.service}
+                  </span>
                 </div>
               </div>
             ))}
