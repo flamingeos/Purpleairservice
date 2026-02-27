@@ -190,67 +190,12 @@ const timeWindows = [
 ];
 
 const galleryItems = [
-  {
-    label: "AC Installation",
-    category: "Installation",
-    color: "from-purple-900/70 to-indigo-900/70",
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-12 h-12 opacity-40">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
-      </svg>
-    ),
-  },
-  {
-    label: "Rooftop Unit Replacement",
-    category: "Commercial",
-    color: "from-blue-900/70 to-indigo-900/70",
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-12 h-12 opacity-40">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 21h16.5M4.5 3h15M5.25 3v18m13.5-18v18M9 6.75h1.5m-1.5 3h1.5m-1.5 3h1.5m3-6H15m-1.5 3H15m-1.5 3H15M9 21v-3.375c0-.621.504-1.125 1.125-1.125h3.75c.621 0 1.125.504 1.125 1.125V21" />
-      </svg>
-    ),
-  },
-  {
-    label: "Duct Cleaning & Sealing",
-    category: "Duct Work",
-    color: "from-indigo-900/70 to-purple-900/70",
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-12 h-12 opacity-40">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
-        <circle cx="12" cy="12" r="9" strokeWidth="1.5" />
-      </svg>
-    ),
-  },
-  {
-    label: "Heat Pump Install",
-    category: "Installation",
-    color: "from-purple-900/70 to-blue-900/70",
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-12 h-12 opacity-40">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M11.42 15.17L17.25 21A2.652 2.652 0 0021 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 11-3.586-3.586l6.837-5.63m5.108-.233c.55-.164 1.163-.188 1.743-.14a4.5 4.5 0 004.486-6.336l-3.276 3.277a3.004 3.004 0 01-2.25-2.25l3.276-3.276a4.5 4.5 0 00-6.336 4.486c.091 1.076-.071 2.264-.904 2.95l-.102.085m-1.745 1.437L5.909 7.5H4.5L2.25 3.75l1.5-1.5L7.5 4.5v1.409l4.26 4.26m-1.745 1.437l1.745-1.437m6.615 8.206L15.75 15.75M4.867 19.125h.008v.008h-.008v-.008z" />
-      </svg>
-    ),
-  },
-  {
-    label: "Emergency Repair",
-    category: "Repair",
-    color: "from-red-900/50 to-purple-900/70",
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-12 h-12 opacity-40">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
-      </svg>
-    ),
-  },
-  {
-    label: "Preventative Maintenance",
-    category: "Maintenance",
-    color: "from-green-900/40 to-blue-900/70",
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-12 h-12 opacity-40">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
-      </svg>
-    ),
-  },
+  { image: "/gallery/1.jpg", label: "AC Installation", category: "Installation" },
+  { image: "/gallery/2.jpg", label: "Rooftop Unit Replacement", category: "Commercial" },
+  { image: "/gallery/3.jpg", label: "Duct Cleaning & Sealing", category: "Duct Work" },
+  { image: "/gallery/4.jpg", label: "Heat Pump Install", category: "Installation" },
+  { image: "/gallery/5.jpg", label: "Emergency Repair", category: "Repair" },
+  { image: "/gallery/6.jpg", label: "Preventative Maintenance", category: "Maintenance" },
 ];
 
 // ─── Main Page ────────────────────────────────────────────────────────────────
@@ -489,21 +434,16 @@ export default function Home() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {galleryItems.map((item, i) => (
               <div key={i}
-                className={`group relative rounded-2xl overflow-hidden border aspect-[4/3] bg-gradient-to-br ${item.color} transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_40px_rgba(167,139,250,0.2)]`}
-                style={{ borderColor: "rgba(167,139,250,0.15)" }}>
-                {/* Subtle grid texture */}
-                <div className="absolute inset-0 opacity-10"
-                  style={{
-                    backgroundImage: "linear-gradient(rgba(167,139,250,0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(167,139,250,0.3) 1px, transparent 1px)",
-                    backgroundSize: "32px 32px",
-                  }} />
-                {/* Center icon */}
-                <div className="absolute inset-0 flex items-center justify-center" style={{ color: "#a78bfa" }}>
-                  {item.icon}
-                </div>
+                className="group relative rounded-2xl overflow-hidden border aspect-[4/3] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_40px_rgba(167,139,250,0.25)]"
+                style={{ borderColor: "rgba(167,139,250,0.15)", background: "#0f0a1e" }}>
+                <img
+                  src={item.image}
+                  alt={item.label}
+                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
                 {/* Overlay label */}
-                <div className="absolute bottom-0 left-0 right-0 px-5 py-4 transition-all duration-300"
-                  style={{ background: "linear-gradient(to top, rgba(15,10,30,0.85), transparent)" }}>
+                <div className="absolute bottom-0 left-0 right-0 px-5 py-4"
+                  style={{ background: "linear-gradient(to top, rgba(15,10,30,0.9), transparent)" }}>
                   <span className="text-xs font-semibold uppercase tracking-widest mb-1 block" style={{ color: "#a78bfa" }}>
                     {item.category}
                   </span>
