@@ -255,12 +255,8 @@ export default function Home() {
       <nav className="fixed top-0 left-0 right-0 z-50 backdrop-blur-md border-b border-purple-900/30"
         style={{ background: "rgba(15,10,30,0.85)" }}>
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-lg flex items-center justify-center"
-              style={{ background: "linear-gradient(135deg,#7c3aed,#3b82f6)" }}>
-              <span className="text-white font-bold text-sm">PA</span>
-            </div>
-            <span className="font-bold text-white text-lg tracking-tight">PurpleAir<span className="text-gradient"> HVAC</span></span>
+          <div className="flex items-center">
+            <img src="/logo.jpg" alt="PurpleAir HVAC Logo" className="h-12 w-auto object-contain" />
           </div>
           <div className="hidden md:flex items-center gap-8 text-sm text-slate-300">
             <a href="#services" className="hover:text-white transition-colors">Services</a>
@@ -783,12 +779,8 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
             {/* Brand */}
             <div>
-              <div className="flex items-center gap-2 mb-4">
-                <div className="w-9 h-9 rounded-xl flex items-center justify-center"
-                  style={{ background: "linear-gradient(135deg,#7c3aed,#3b82f6)" }}>
-                  <span className="text-white font-bold text-sm">PA</span>
-                </div>
-                <span className="font-bold text-white text-xl">PurpleAir<span className="text-gradient"> HVAC</span></span>
+              <div className="mb-4">
+                <img src="/logo.jpg" alt="PurpleAir HVAC Logo" className="h-14 w-auto object-contain" />
               </div>
               <p className="text-sm leading-relaxed" style={{ color: "rgba(255,255,255,0.45)" }}>
                 Your trusted local HVAC professionals. We keep your home comfortable year-round with fast, reliable, and affordable service.
