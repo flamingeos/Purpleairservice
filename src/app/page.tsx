@@ -227,6 +227,7 @@ const galleryItems = [
 export default function Home() {
   const [step, setStep] = useState(1);
   const [submitted, setSubmitted] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
   const [formData, setFormData] = useState<FormData>({
     service: "",
     date: "",
@@ -253,13 +254,16 @@ export default function Home() {
 
       {/* ── NAV ─────────────────────────────────────────────────────────────── */}
       <nav className="fixed top-0 left-0 right-0 z-50 backdrop-blur-md border-b border-purple-900/30"
-        style={{ background: "rgba(15,10,30,0.85)" }}>
-        <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+        style={{ background: "rgba(15,10,30,0.92)" }}>
+        {/* Top bar */}
+        <div className="max-w-7xl mx-auto px-5 py-3 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <img src="/logo.jpg" alt="PurpleAir HVAC Logo" className="h-12 w-auto object-contain" />
-            <span className="font-bold text-white text-lg tracking-tight">PurpleAir<span className="text-gradient"> Services</span></span>
+            <img src="/logo.jpg" alt="PurpleAir HVAC Logo" className="h-10 w-auto object-contain" />
+            <span className="font-bold text-white text-base tracking-tight">PurpleAir<span className="text-gradient"> Services</span></span>
           </div>
-          <div className="hidden md:flex items-center gap-8 text-sm text-slate-300">
+
+          {/* Desktop links */}
+          <div className="hidden md:flex items-center gap-7 text-sm text-slate-300">
             <a href="#services" className="hover:text-white transition-colors">Services</a>
             <a href="#why-us" className="hover:text-white transition-colors">Why Us</a>
             <a href="#gallery" className="hover:text-white transition-colors">Gallery</a>
@@ -267,13 +271,60 @@ export default function Home() {
             <a href="#service-area" className="hover:text-white transition-colors">Service Area</a>
             <a href="#booking" className="hover:text-white transition-colors">Book Service</a>
           </div>
-          <a href="tel:+14074584032"
-            className="flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-semibold text-white transition-all hover:scale-105"
-            style={{ background: "linear-gradient(135deg,#7c3aed,#3b82f6)" }}>
-            <PhoneIcon />
-            <span className="hidden sm:inline">(407) 458-4032</span>
-          </a>
+
+          {/* Right side */}
+          <div className="flex items-center gap-3">
+            <a href="tel:+14074584032"
+              className="hidden md:flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-semibold text-white transition-all hover:scale-105"
+              style={{ background: "linear-gradient(135deg,#7c3aed,#3b82f6)" }}>
+              <PhoneIcon />
+              (407) 458-4032
+            </a>
+            {/* Hamburger — mobile only */}
+            <button
+              onClick={() => setMenuOpen(!menuOpen)}
+              className="md:hidden flex flex-col justify-center items-center w-10 h-10 rounded-lg gap-1.5 transition-all"
+              style={{ background: "rgba(124,58,237,0.15)" }}
+              aria-label="Toggle menu">
+              <span className={`block w-5 h-0.5 bg-white transition-all duration-300 ${menuOpen ? "rotate-45 translate-y-2" : ""}`} />
+              <span className={`block w-5 h-0.5 bg-white transition-all duration-300 ${menuOpen ? "opacity-0" : ""}`} />
+              <span className={`block w-5 h-0.5 bg-white transition-all duration-300 ${menuOpen ? "-rotate-45 -translate-y-2" : ""}`} />
+            </button>
+          </div>
         </div>
+
+        {/* Mobile dropdown */}
+        {menuOpen && (
+          <div className="md:hidden border-t px-5 py-4 flex flex-col gap-1"
+            style={{ borderColor: "rgba(167,139,250,0.15)", background: "rgba(15,10,30,0.98)" }}>
+            {[
+              { href: "#services", label: "Services" },
+              { href: "#why-us", label: "Why Us" },
+              { href: "#gallery", label: "Gallery" },
+              { href: "#reviews", label: "Reviews" },
+              { href: "#service-area", label: "Service Area" },
+              { href: "#booking", label: "Book Service" },
+            ].map(({ href, label }) => (
+              <a key={href} href={href}
+                onClick={() => setMenuOpen(false)}
+                className="flex items-center justify-between px-4 py-3.5 rounded-xl text-sm font-medium text-slate-300 hover:text-white transition-all"
+                style={{ background: "rgba(255,255,255,0.03)" }}>
+                {label}
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-4 h-4 opacity-40">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+                </svg>
+              </a>
+            ))}
+            {/* Call button inside menu */}
+            <a href="tel:+14074584032"
+              onClick={() => setMenuOpen(false)}
+              className="flex items-center justify-center gap-2 mt-2 px-4 py-3.5 rounded-xl text-sm font-bold text-white transition-all"
+              style={{ background: "linear-gradient(135deg,#7c3aed,#3b82f6)" }}>
+              <PhoneIcon />
+              Call (407) 458-4032
+            </a>
+          </div>
+        )}
       </nav>
 
       {/* ── HERO ────────────────────────────────────────────────────────────── */}
@@ -302,27 +353,27 @@ export default function Home() {
             Financing Available — 0% APR for Qualified Customers
           </div>
 
-          <h1 className="text-5xl sm:text-6xl md:text-7xl font-black text-white leading-tight mb-6 tracking-tight">
+          <h1 className="text-4xl sm:text-6xl md:text-7xl font-black text-white leading-tight mb-6 tracking-tight">
             Fast &amp; Reliable<br />
             <span className="text-gradient">HVAC Service</span>
           </h1>
-          <p className="text-xl md:text-2xl font-light mb-4" style={{ color: "rgba(255,255,255,0.75)" }}>
+          <p className="text-lg md:text-2xl font-light mb-4" style={{ color: "rgba(255,255,255,0.75)" }}>
             Book Online in Minutes
           </p>
-          <p className="text-base md:text-lg max-w-2xl mx-auto mb-10 leading-relaxed" style={{ color: "rgba(255,255,255,0.55)" }}>
+          <p className="text-sm md:text-lg max-w-2xl mx-auto mb-10 leading-relaxed px-2" style={{ color: "rgba(255,255,255,0.55)" }}>
             Expert Repairs · New Installations · Preventative Maintenance · Duct Cleaning<br />
-            Licensed &amp; Insured Technicians Serving the Greater Metro Area
+            Licensed &amp; Insured Technicians Serving Central Florida
           </p>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <div className="flex flex-col items-stretch sm:flex-row sm:items-center justify-center gap-3 w-full sm:w-auto px-2 sm:px-0">
             <button onClick={scrollToForm}
-              className="group flex items-center gap-3 px-8 py-4 rounded-xl text-white font-bold text-lg transition-all hover:scale-105 hover:shadow-[0_0_40px_rgba(124,58,237,0.4)]"
+              className="group flex items-center justify-center gap-3 px-8 py-4 rounded-xl text-white font-bold text-lg transition-all hover:scale-105 hover:shadow-[0_0_40px_rgba(124,58,237,0.4)]"
               style={{ background: "linear-gradient(135deg,#7c3aed,#3b82f6)" }}>
               <CalendarIcon />
               Schedule Service
             </button>
             <a href="tel:+14074584032"
-              className="flex items-center gap-3 px-8 py-4 rounded-xl font-bold text-lg transition-all hover:scale-105 border"
+              className="flex items-center justify-center gap-3 px-8 py-4 rounded-xl font-bold text-lg transition-all hover:scale-105 border"
               style={{
                 color: "#93c5fd",
                 borderColor: "rgba(147,197,253,0.4)",
@@ -334,7 +385,7 @@ export default function Home() {
           </div>
 
           {/* Quick trust row */}
-          <div className="mt-16 flex flex-wrap items-center justify-center gap-6 text-sm" style={{ color: "rgba(255,255,255,0.5)" }}>
+          <div className="mt-12 flex flex-wrap items-center justify-center gap-4 text-sm" style={{ color: "rgba(255,255,255,0.5)" }}>
             {["Licensed & Insured", "Same-Day Available", "Free Estimates", "5-Star Rated"].map((t) => (
               <div key={t} className="flex items-center gap-2">
                 <span className="text-green-400"><CheckIcon /></span>
@@ -350,9 +401,9 @@ export default function Home() {
       </section>
 
       {/* ── SERVICES GRID ───────────────────────────────────────────────────── */}
-      <section id="services" className="py-28 px-6">
+      <section id="services" className="py-16 md:py-28 px-5 md:px-6">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
+          <div className="text-center mb-10 md:mb-16">
             <p className="text-sm font-semibold uppercase tracking-widest mb-3" style={{ color: "#a78bfa" }}>What We Do</p>
             <h2 className="text-4xl md:text-5xl font-black text-white mb-4">Complete HVAC Solutions</h2>
             <p className="text-lg max-w-2xl mx-auto" style={{ color: "rgba(255,255,255,0.5)" }}>
@@ -378,10 +429,10 @@ export default function Home() {
       </section>
 
       {/* ── WHY CHOOSE US ───────────────────────────────────────────────────── */}
-      <section id="why-us" className="py-24 px-6"
+      <section id="why-us" className="py-16 md:py-24 px-5 md:px-6"
         style={{ background: "linear-gradient(180deg, transparent, rgba(46,16,101,0.15), transparent)" }}>
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
+          <div className="text-center mb-10 md:mb-16">
             <p className="text-sm font-semibold uppercase tracking-widest mb-3" style={{ color: "#93c5fd" }}>Why PurpleAir</p>
             <h2 className="text-4xl md:text-5xl font-black text-white mb-4">Built on Trust &amp; Results</h2>
             <p className="text-lg max-w-xl mx-auto" style={{ color: "rgba(255,255,255,0.5)" }}>
@@ -389,10 +440,10 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
             {trustBlocks.map((b) => (
               <div key={b.title}
-                className="rounded-2xl p-8 text-center border transition-all hover:-translate-y-1 hover:shadow-[0_0_30px_rgba(167,139,250,0.15)]"
+                className="rounded-2xl p-6 md:p-8 text-center border transition-all hover:-translate-y-1 hover:shadow-[0_0_30px_rgba(167,139,250,0.15)]"
                 style={{
                   background: "rgba(255,255,255,0.03)",
                   borderColor: "rgba(167,139,250,0.15)",
@@ -407,9 +458,9 @@ export default function Home() {
       </section>
 
       {/* ── REVIEWS ─────────────────────────────────────────────────────────── */}
-      <section id="reviews" className="py-24 px-6">
+      <section id="reviews" className="py-16 md:py-24 px-5 md:px-6">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
+          <div className="text-center mb-10 md:mb-16">
             <p className="text-sm font-semibold uppercase tracking-widest mb-3" style={{ color: "#a78bfa" }}>Customer Reviews</p>
             <h2 className="text-4xl md:text-5xl font-black text-white mb-4">Trusted Across Central Florida</h2>
             <p className="text-lg max-w-2xl mx-auto" style={{ color: "rgba(255,255,255,0.5)" }}>
@@ -483,10 +534,10 @@ export default function Home() {
       </section>
 
       {/* ── GALLERY ─────────────────────────────────────────────────────────── */}
-      <section id="gallery" className="py-24 px-6"
+      <section id="gallery" className="py-16 md:py-24 px-5 md:px-6"
         style={{ background: "linear-gradient(180deg, transparent, rgba(46,16,101,0.12), transparent)" }}>
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
+          <div className="text-center mb-10 md:mb-16">
             <p className="text-sm font-semibold uppercase tracking-widest mb-3" style={{ color: "#93c5fd" }}>Our Work</p>
             <h2 className="text-4xl md:text-5xl font-black text-white mb-4">See the PurpleAir Difference</h2>
             <p className="text-lg max-w-2xl mx-auto" style={{ color: "rgba(255,255,255,0.5)" }}>
@@ -519,12 +570,12 @@ export default function Home() {
       </section>
 
       {/* ── SERVICE AREA ────────────────────────────────────────────────────── */}
-      <section id="service-area" className="py-28 px-6"
+      <section id="service-area" className="py-16 md:py-28 px-5 md:px-6"
         style={{ background: "linear-gradient(180deg, transparent, rgba(46,16,101,0.18), transparent)" }}>
         <div className="max-w-7xl mx-auto">
 
           {/* Header */}
-          <div className="text-center mb-16">
+          <div className="text-center mb-10 md:mb-16">
             <p className="text-sm font-semibold uppercase tracking-widest mb-3" style={{ color: "#a78bfa" }}>Where We Work</p>
             <h2 className="text-4xl md:text-5xl font-black text-white mb-4">Serving Central Florida</h2>
             <p className="text-lg max-w-2xl mx-auto" style={{ color: "rgba(255,255,255,0.5)" }}>
@@ -639,7 +690,7 @@ export default function Home() {
       </section>
 
       {/* ── MULTI-STEP BOOKING FORM ──────────────────────────────────────────── */}
-      <section id="booking" className="py-28 px-6"
+      <section id="booking" className="py-16 md:py-28 px-5 md:px-6"
         style={{ background: "linear-gradient(180deg, transparent, rgba(46,16,101,0.2), transparent)" }}>
         <div className="max-w-2xl mx-auto">
           <div className="text-center mb-12">
@@ -868,7 +919,7 @@ export default function Home() {
       </section>
 
       {/* ── FINAL CTA ───────────────────────────────────────────────────────── */}
-      <section className="py-28 px-6">
+      <section className="py-16 md:py-28 px-5 md:px-6">
         <div className="max-w-4xl mx-auto text-center rounded-3xl p-16 border relative overflow-hidden"
           style={{
             background: "linear-gradient(135deg, rgba(76,29,149,0.3), rgba(30,58,95,0.3))",
@@ -896,7 +947,7 @@ export default function Home() {
       </section>
 
       {/* ── FOOTER ──────────────────────────────────────────────────────────── */}
-      <footer className="border-t py-16 px-6" style={{ borderColor: "rgba(167,139,250,0.1)", background: "rgba(0,0,0,0.3)" }}>
+      <footer className="border-t py-12 md:py-16 px-5 md:px-6" style={{ borderColor: "rgba(167,139,250,0.1)", background: "rgba(0,0,0,0.3)" }}>
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
             {/* Brand */}
