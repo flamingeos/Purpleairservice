@@ -80,138 +80,213 @@ const CalendarIcon = () => (
 
 // ─── Data ─────────────────────────────────────────────────────────────────────
 
-const services = [
-  {
-    icon: <WrenchIcon />,
-    title: "HVAC Repairs",
-    desc: "Fast diagnosis and expert repair for all makes and models. We fix the problem right the first time — no guesswork, no runaround.",
-    color: "from-purple-900/40 to-indigo-900/40",
-    glow: "hover:shadow-[0_0_30px_rgba(167,139,250,0.2)]",
-  },
-  {
-    icon: <HomeIcon />,
-    title: "New Installations",
-    desc: "Upgrade to a high-efficiency system sized perfectly for your home. Our certified technicians handle everything from permits to startup.",
-    color: "from-blue-900/40 to-indigo-900/40",
-    glow: "hover:shadow-[0_0_30px_rgba(147,197,253,0.2)]",
-  },
-  {
-    icon: <ShieldIcon />,
-    title: "Preventative Maintenance",
-    desc: "Keep your system running at peak performance year-round. Our tune-up plans catch small issues before they become expensive repairs.",
-    color: "from-purple-900/40 to-blue-900/40",
-    glow: "hover:shadow-[0_0_30px_rgba(167,139,250,0.2)]",
-  },
-  {
-    icon: <WindIcon />,
-    title: "Duct Cleaning",
-    desc: "Remove years of buildup — dust, allergens, mold spores — from your ductwork. Breathe cleaner air and improve system efficiency.",
-    color: "from-indigo-900/40 to-blue-900/40",
-    glow: "hover:shadow-[0_0_30px_rgba(147,197,253,0.2)]",
-  },
-  {
-    icon: <BoltIcon />,
-    title: "Emergency Service",
-    desc: "HVAC emergencies don't wait for business hours — and neither do we. Our on-call technicians respond fast when you need us most.",
-    color: "from-red-900/20 to-purple-900/40",
-    glow: "hover:shadow-[0_0_30px_rgba(248,113,113,0.15)]",
-  },
-  {
-    icon: <CreditCardIcon />,
-    title: "Financing Options",
-    desc: "Don't let cost stand between you and comfort. Flexible financing plans available with approved credit — get the system you need today.",
-    color: "from-green-900/20 to-blue-900/40",
-    glow: "hover:shadow-[0_0_30px_rgba(52,211,153,0.15)]",
-  },
+type Lang = "en" | "es";
+
+const servicesMeta = [
+  { icon: <WrenchIcon />, color: "from-purple-900/40 to-indigo-900/40", glow: "hover:shadow-[0_0_30px_rgba(167,139,250,0.2)]" },
+  { icon: <HomeIcon />,   color: "from-blue-900/40 to-indigo-900/40",   glow: "hover:shadow-[0_0_30px_rgba(147,197,253,0.2)]" },
+  { icon: <ShieldIcon />, color: "from-purple-900/40 to-blue-900/40",   glow: "hover:shadow-[0_0_30px_rgba(167,139,250,0.2)]" },
+  { icon: <WindIcon />,   color: "from-indigo-900/40 to-blue-900/40",   glow: "hover:shadow-[0_0_30px_rgba(147,197,253,0.2)]" },
+  { icon: <BoltIcon />,   color: "from-red-900/20 to-purple-900/40",    glow: "hover:shadow-[0_0_30px_rgba(248,113,113,0.15)]" },
+  { icon: <CreditCardIcon />, color: "from-green-900/20 to-blue-900/40", glow: "hover:shadow-[0_0_30px_rgba(52,211,153,0.15)]" },
 ];
 
-const trustBlocks = [
-  {
-    icon: "🏅",
-    title: "Licensed & Insured",
-    desc: "Every technician is fully licensed, bonded, and insured for your complete peace of mind.",
-  },
-  {
-    icon: "⚡",
-    title: "Same-Day Service",
-    desc: "We offer same-day appointments for urgent repairs. Your comfort can't wait — and we won't make it.",
-  },
-  {
-    icon: "📋",
-    title: "Free Estimates",
-    desc: "No surprises, no pressure. Get a transparent, no-obligation estimate before any work begins.",
-  },
-  {
-    icon: "⭐",
-    title: "5-Star Rated Technicians",
-    desc: "Our certified pros consistently earn top ratings for their professionalism, speed, and clean work.",
-  },
-];
+const trustMeta = ["🏅", "⚡", "📋", "⭐"];
 
-const testimonials = [
-  {
-    name: "Carlos M.",
-    location: "Kissimmee, FL",
-    text: "AC went out in the middle of July — it was brutal. PurpleAir showed up the same day and had it running within two hours. The tech was professional, explained everything, and didn't try to upsell me on anything I didn't need. Highly recommend.",
-    service: "Emergency AC Repair",
-    initials: "CM",
+const translations = {
+  en: {
+    nav: { services: "Services", whyUs: "Why Us", gallery: "Gallery", reviews: "Reviews", serviceArea: "Service Area", book: "Book Service" },
+    hero: {
+      badge: "Financing Available — 0% APR for Qualified Customers",
+      h1a: "Fast & Reliable", h1b: "HVAC Service", sub: "Book Online in Minutes",
+      desc1: "Expert Repairs · New Installations · Preventative Maintenance · Duct Cleaning",
+      desc2: "Licensed & Insured Technicians Serving Central Florida",
+      scheduleBtn: "Schedule Service", callBtn: "Call Now",
+      trust: ["Licensed & Insured", "Same-Day Available", "Free Estimates", "5-Star Rated"],
+    },
+    services: {
+      label: "What We Do", title: "Complete HVAC Solutions",
+      desc: "From emergency repairs to full system replacements, our certified technicians handle every aspect of your home comfort.",
+      items: [
+        { title: "HVAC Repairs",             desc: "Fast diagnosis and expert repair for all makes and models. We fix the problem right the first time — no guesswork, no runaround." },
+        { title: "New Installations",         desc: "Upgrade to a high-efficiency system sized perfectly for your home. Our certified technicians handle everything from permits to startup." },
+        { title: "Preventative Maintenance",  desc: "Keep your system running at peak performance year-round. Our tune-up plans catch small issues before they become expensive repairs." },
+        { title: "Duct Cleaning",             desc: "Remove years of buildup — dust, allergens, mold spores — from your ductwork. Breathe cleaner air and improve system efficiency." },
+        { title: "Emergency Service",         desc: "HVAC emergencies don't wait for business hours — and neither do we. Our on-call technicians respond fast when you need us most." },
+        { title: "Financing Options",         desc: "Don't let cost stand between you and comfort. Flexible financing plans available with approved credit — get the system you need today." },
+      ],
+    },
+    whyUs: {
+      label: "Why PurpleAir", title: "Built on Trust & Results",
+      desc: "We don't just fix HVAC systems — we build long-term relationships with homeowners who deserve reliable service.",
+      items: [
+        { title: "Licensed & Insured",        desc: "Every technician is fully licensed, bonded, and insured for your complete peace of mind." },
+        { title: "Same-Day Service",           desc: "We offer same-day appointments for urgent repairs. Your comfort can't wait — and we won't make it." },
+        { title: "Free Estimates",             desc: "No surprises, no pressure. Get a transparent, no-obligation estimate before any work begins." },
+        { title: "5-Star Rated Technicians",  desc: "Our certified pros consistently earn top ratings for their professionalism, speed, and clean work." },
+      ],
+    },
+    reviews: {
+      label: "Customer Reviews", title: "Trusted Across Central Florida",
+      desc: "From Orlando to Tampa — homeowners across the region trust PurpleAir to keep their families cool and comfortable.",
+      ratingText: "200+ Google Reviews",
+      items: [
+        { name: "Carlos M.", location: "Kissimmee, FL", initials: "CM", service: "Emergency AC Repair",       text: "AC went out in the middle of July — it was brutal. PurpleAir showed up the same day and had it running within two hours. The tech was professional, explained everything, and didn't try to upsell me. Highly recommend." },
+        { name: "Ashley R.", location: "Orlando, FL",   initials: "AR", service: "New System Installation",  text: "I got three quotes before going with PurpleAir and I'm so glad I did. The price was fair, the install team was clean and respectful of my home, and my new system runs quieter than anything I've had before. 10/10." },
+        { name: "James W.",  location: "Apopka, FL",    initials: "JW", service: "Preventative Maintenance", text: "Signed up for their annual maintenance plan and it's already paid for itself. They caught a refrigerant issue that would've turned into a full breakdown during peak summer. These guys actually know what they're doing." },
+        { name: "Maria L.",  location: "Tampa, FL",     initials: "ML", service: "AC Repair",                text: "I called on a Saturday morning and they were at my house by noon. Fixed the blower motor fast and the price was completely reasonable. No hidden fees, no nonsense. Will definitely be calling them again." },
+        { name: "Deon P.",   location: "Winter Park, FL", initials: "DP", service: "Duct Cleaning",          text: "PurpleAir cleaned our ductwork and the difference in air quality was immediate. My wife has allergies and she noticed it the same day. Super thorough — they showed us before and after photos. Really impressive." },
+        { name: "Sandra K.", location: "Sanford, FL",   initials: "SK", service: "New System Installation",  text: "Used their financing option to replace my old unit and it was seamless. The team walked me through everything and never made me feel pressured. New system has cut my electric bill noticeably. Couldn't be happier." },
+      ],
+    },
+    gallery: {
+      label: "Our Work", title: "See the PurpleAir Difference",
+      desc: "From emergency repairs to full system installs — every job gets the same meticulous attention to detail.",
+      items: [
+        { label: "AC Installation",          category: "Installation" },
+        { label: "Rooftop Unit Replacement", category: "Commercial" },
+        { label: "Duct Cleaning & Sealing",  category: "Duct Work" },
+        { label: "Heat Pump Install",        category: "Installation" },
+        { label: "Emergency Repair",         category: "Repair" },
+        { label: "Preventative Maintenance", category: "Maintenance" },
+      ],
+    },
+    serviceArea: {
+      label: "Where We Work", title: "Serving Central Florida",
+      desc: "PurpleAir Services covers the entire Central Florida region — from the coast to the heartland. If you're in the area, we've got you covered.",
+      ctaMain: "Don't see your city?", ctaSub: "Call us — we likely service your area.",
+    },
+    booking: {
+      label: "Get Started", title: "Request Your Appointment", desc: "Takes less than 2 minutes. No commitment required.",
+      steps: ["Service", "Schedule", "Contact"],
+      step1Title: "What do you need help with?", step1Sub: "Select the service that best describes your situation.",
+      step2Title: "When do you need service?",   step2Sub: "Choose your preferred date and arrival window.",
+      dateLabel: "Preferred Date", windowLabel: "Preferred Arrival Window", windowPlaceholder: "Select a time window...",
+      step3Title: "How should we contact you?",  step3Sub: "We'll send a confirmation and reach out to confirm your appointment.",
+      msgLabel: "Message", msgOptional: "(optional)", msgPlaceholder: "Describe the issue, system age, or any other details that would help our technician...",
+      backBtn: "← Back", continueBtn: "Continue →", submitBtn: "Request Appointment",
+      disclaimer: "No payment required. We'll contact you to confirm within 1 business hour.",
+      successTitle: "Request Received!", successMsg1: "Thanks,", successMsg2: "We've got your appointment request.",
+      successMsg3: "A member of our team will call you at", successMsg4: "within 1 business hour to confirm your appointment for",
+      successCall: "Questions? Call us:",
+      serviceOptions: ["AC Repair", "Heating Repair", "New AC Installation", "New Heating System", "Preventative Maintenance", "Duct Cleaning", "Emergency Service", "Free Estimate"],
+      timeWindows: ["8:00 AM – 10:00 AM", "10:00 AM – 12:00 PM", "12:00 PM – 2:00 PM", "2:00 PM – 4:00 PM", "4:00 PM – 6:00 PM", "Flexible / First Available"],
+      fields: [
+        { label: "Full Name",      key: "fullName", type: "text",  placeholder: "John Smith" },
+        { label: "Phone Number",   key: "phone",    type: "tel",   placeholder: "(407) 000-0000" },
+        { label: "Email Address",  key: "email",    type: "email", placeholder: "john@example.com" },
+        { label: "Zip Code",       key: "zipCode",  type: "text",  placeholder: "32801" },
+      ],
+    },
+    cta: {
+      label: "Ready to Get Started?", title1: "Ready for Fast, Professional", title2: "HVAC Service?",
+      desc: "Join thousands of homeowners who trust PurpleAir for all their heating and cooling needs. Your free estimate is just one click away.",
+      btn: "Book Your Free Estimate",
+    },
+    footer: {
+      tagline: "Your trusted local HVAC professionals. We keep your home comfortable year-round with fast, reliable, and affordable service.",
+      contactTitle: "Contact Us", serviceAreaTitle: "Service Area",
+      serviceAreaText: "Orange, Seminole, Osceola, Polk, Lake & Volusia Counties — including Orlando, Kissimmee, Sanford, Apopka, Clermont, and surrounding Central Florida communities.",
+      accepting: "Now Accepting New Customers", rights: "All rights reserved.", license: "Licensed · Bonded · Insured | ROC #000000",
+    },
   },
-  {
-    name: "Ashley R.",
-    location: "Orlando, FL",
-    text: "I got three quotes before going with PurpleAir and I'm so glad I did. The price was fair, the install team was clean and respectful of my home, and my new system runs quieter than anything I've had before. 10/10 from start to finish.",
-    service: "New System Installation",
-    initials: "AR",
+  es: {
+    nav: { services: "Servicios", whyUs: "Por Qué Nosotros", gallery: "Galería", reviews: "Reseñas", serviceArea: "Área de Servicio", book: "Reservar" },
+    hero: {
+      badge: "Financiamiento Disponible — 0% APR para Clientes Calificados",
+      h1a: "Servicio HVAC", h1b: "Rápido y Confiable", sub: "Reserve en Línea en Minutos",
+      desc1: "Reparaciones Expertas · Instalaciones Nuevas · Mantenimiento Preventivo · Limpieza de Ductos",
+      desc2: "Técnicos Certificados y Asegurados Sirviendo el Centro de Florida",
+      scheduleBtn: "Programar Servicio", callBtn: "Llamar Ahora",
+      trust: ["Licenciado y Asegurado", "Disponible el Mismo Día", "Estimados Gratis", "Calificación 5 Estrellas"],
+    },
+    services: {
+      label: "Lo Que Hacemos", title: "Soluciones Completas de HVAC",
+      desc: "Desde reparaciones de emergencia hasta reemplazos completos de sistemas, nuestros técnicos certificados se encargan de todo su confort en el hogar.",
+      items: [
+        { title: "Reparaciones de HVAC",      desc: "Diagnóstico rápido y reparación experta para todas las marcas y modelos. Resolvemos el problema bien desde la primera vez." },
+        { title: "Instalaciones Nuevas",       desc: "Actualice a un sistema de alta eficiencia perfectamente dimensionado para su hogar. Nuestros técnicos manejan todo, desde los permisos hasta el arranque." },
+        { title: "Mantenimiento Preventivo",   desc: "Mantenga su sistema al máximo rendimiento todo el año. Nuestros planes detectan problemas pequeños antes de que se vuelvan costosas reparaciones." },
+        { title: "Limpieza de Ductos",         desc: "Elimine años de acumulación — polvo, alérgenos, esporas de moho — de sus conductos. Respire aire más limpio y mejore la eficiencia del sistema." },
+        { title: "Servicio de Emergencia",     desc: "Las emergencias de HVAC no esperan el horario comercial — y nosotros tampoco. Nuestros técnicos de guardia responden rápido cuando más nos necesita." },
+        { title: "Opciones de Financiamiento", desc: "No deje que el costo se interponga entre usted y su comodidad. Planes de financiamiento flexibles disponibles con crédito aprobado." },
+      ],
+    },
+    whyUs: {
+      label: "Por Qué PurpleAir", title: "Basado en Confianza y Resultados",
+      desc: "No solo reparamos sistemas de HVAC — construimos relaciones a largo plazo con propietarios que merecen un servicio confiable.",
+      items: [
+        { title: "Licenciado y Asegurado",     desc: "Cada técnico está completamente licenciado, afianzado y asegurado para su total tranquilidad." },
+        { title: "Servicio el Mismo Día",       desc: "Ofrecemos citas el mismo día para reparaciones urgentes. Su comodidad no puede esperar." },
+        { title: "Estimados Gratis",            desc: "Sin sorpresas, sin presión. Obtenga un estimado transparente y sin compromiso antes de que comience cualquier trabajo." },
+        { title: "Técnicos con 5 Estrellas",   desc: "Nuestros profesionales certificados obtienen las mejores calificaciones por su profesionalismo, velocidad y trabajo limpio." },
+      ],
+    },
+    reviews: {
+      label: "Reseñas de Clientes", title: "De Confianza en Todo el Centro de Florida",
+      desc: "Desde Orlando hasta Tampa — propietarios de toda la región confían en PurpleAir para mantener a sus familias cómodas.",
+      ratingText: "200+ Reseñas en Google",
+      items: [
+        { name: "Carlos M.", location: "Kissimmee, FL", initials: "CM", service: "Reparación de Emergencia",  text: "El AC se apagó en julio — fue brutal. PurpleAir llegó el mismo día y lo arregló en dos horas. El técnico fue profesional, explicó todo y no intentó venderme nada innecesario. Muy recomendados." },
+        { name: "Ashley R.", location: "Orlando, FL",   initials: "AR", service: "Instalación Nueva",         text: "Recibí tres cotizaciones y me alegra haber elegido a PurpleAir. El precio fue justo, el equipo fue limpio y respetuoso, y mi nuevo sistema funciona más silencioso que cualquier otro que haya tenido. 10/10." },
+        { name: "James W.",  location: "Apopka, FL",    initials: "JW", service: "Mantenimiento Preventivo",  text: "Me inscribí en su plan anual de mantenimiento y ya se pagó solo. Detectaron un problema de refrigerante que habría causado una falla total en verano. Estos chicos realmente saben lo que hacen." },
+        { name: "Maria L.",  location: "Tampa, FL",     initials: "ML", service: "Reparación de AC",          text: "Llamé un sábado por la mañana y estaban en mi casa al mediodía. Arreglaron el motor rápido y el precio fue completamente razonable. Sin cargos ocultos, sin complicaciones. Definitivamente los llamaré de nuevo." },
+        { name: "Deon P.",   location: "Winter Park, FL", initials: "DP", service: "Limpieza de Ductos",      text: "PurpleAir limpió nuestros ductos y la diferencia en la calidad del aire fue inmediata. Mi esposa tiene alergias y lo notó el mismo día. Trabajo muy minucioso — nos mostraron fotos de antes y después. Muy impresionante." },
+        { name: "Sandra K.", location: "Sanford, FL",   initials: "SK", service: "Instalación Nueva",         text: "Usé su opción de financiamiento para reemplazar mi unidad y fue perfecto. El equipo me explicó todo y nunca me presionó. El nuevo sistema ha reducido mi factura eléctrica notablemente. No podría estar más contenta." },
+      ],
+    },
+    gallery: {
+      label: "Nuestro Trabajo", title: "Vea la Diferencia PurpleAir",
+      desc: "Desde reparaciones de emergencia hasta instalaciones completas — cada trabajo recibe la misma atención meticulosa al detalle.",
+      items: [
+        { label: "Instalación de AC",          category: "Instalación" },
+        { label: "Reemplazo de Unidad",        category: "Comercial" },
+        { label: "Limpieza de Ductos",         category: "Ductos" },
+        { label: "Instalación de Bomba de Calor", category: "Instalación" },
+        { label: "Reparación de Emergencia",   category: "Reparación" },
+        { label: "Mantenimiento Preventivo",   category: "Mantenimiento" },
+      ],
+    },
+    serviceArea: {
+      label: "Dónde Trabajamos", title: "Sirviendo el Centro de Florida",
+      desc: "PurpleAir Services cubre toda la región del Centro de Florida. Si está en el área, lo tenemos cubierto.",
+      ctaMain: "¿No ve su ciudad?", ctaSub: "Llámenos — probablemente atendemos su área.",
+    },
+    booking: {
+      label: "Comenzar", title: "Solicite Su Cita", desc: "Toma menos de 2 minutos. Sin compromiso requerido.",
+      steps: ["Servicio", "Horario", "Contacto"],
+      step1Title: "¿Con qué necesita ayuda?",        step1Sub: "Seleccione el servicio que mejor describe su situación.",
+      step2Title: "¿Cuándo necesita el servicio?",   step2Sub: "Elija su fecha preferida y ventana de llegada.",
+      dateLabel: "Fecha Preferida", windowLabel: "Ventana de Llegada Preferida", windowPlaceholder: "Seleccione una ventana horaria...",
+      step3Title: "¿Cómo debemos contactarlo?",      step3Sub: "Le enviaremos una confirmación y nos comunicaremos para confirmar su cita.",
+      msgLabel: "Mensaje", msgOptional: "(opcional)", msgPlaceholder: "Describa el problema, la antigüedad del sistema o cualquier detalle que ayude a nuestro técnico...",
+      backBtn: "← Atrás", continueBtn: "Continuar →", submitBtn: "Solicitar Cita",
+      disclaimer: "No se requiere pago. Nos comunicaremos para confirmar dentro de 1 hora hábil.",
+      successTitle: "¡Solicitud Recibida!", successMsg1: "Gracias,", successMsg2: "Recibimos su solicitud de cita.",
+      successMsg3: "Un miembro de nuestro equipo le llamará al", successMsg4: "dentro de 1 hora hábil para confirmar su cita del",
+      successCall: "¿Preguntas? Llámenos:",
+      serviceOptions: ["Reparación de AC", "Reparación de Calefacción", "Instalación Nueva de AC", "Sistema de Calefacción Nuevo", "Mantenimiento Preventivo", "Limpieza de Ductos", "Servicio de Emergencia", "Estimado Gratis"],
+      timeWindows: ["8:00 AM – 10:00 AM", "10:00 AM – 12:00 PM", "12:00 PM – 2:00 PM", "2:00 PM – 4:00 PM", "4:00 PM – 6:00 PM", "Flexible / Primera Disponible"],
+      fields: [
+        { label: "Nombre Completo",       key: "fullName", type: "text",  placeholder: "Juan García" },
+        { label: "Número de Teléfono",    key: "phone",    type: "tel",   placeholder: "(407) 000-0000" },
+        { label: "Correo Electrónico",    key: "email",    type: "email", placeholder: "juan@ejemplo.com" },
+        { label: "Código Postal",         key: "zipCode",  type: "text",  placeholder: "32801" },
+      ],
+    },
+    cta: {
+      label: "¿Listo para Comenzar?", title1: "¿Listo para un Servicio HVAC", title2: "Rápido y Profesional?",
+      desc: "Únase a miles de propietarios que confían en PurpleAir para todas sus necesidades de calefacción y refrigeración. Su estimado gratis está a un clic.",
+      btn: "Reserve Su Estimado Gratis",
+    },
+    footer: {
+      tagline: "Sus profesionales locales de HVAC de confianza. Mantenemos su hogar cómodo durante todo el año con un servicio rápido, confiable y asequible.",
+      contactTitle: "Contáctenos", serviceAreaTitle: "Área de Servicio",
+      serviceAreaText: "Condados de Orange, Seminole, Osceola, Polk, Lake y Volusia — incluyendo Orlando, Kissimmee, Sanford, Apopka, Clermont y comunidades aledañas del Centro de Florida.",
+      accepting: "Aceptando Nuevos Clientes", rights: "Todos los derechos reservados.", license: "Licenciado · Afianzado · Asegurado | ROC #000000",
+    },
   },
-  {
-    name: "James W.",
-    location: "Apopka, FL",
-    text: "Signed up for their annual maintenance plan and it's already paid for itself. They caught a refrigerant issue on the first visit that would've turned into a full breakdown during peak summer. These guys actually know what they're doing.",
-    service: "Preventative Maintenance",
-    initials: "JW",
-  },
-  {
-    name: "Maria L.",
-    location: "Tampa, FL",
-    text: "I called on a Saturday morning and they were at my house by noon. Fixed the blower motor on my unit fast and the price was completely reasonable. No hidden fees, no nonsense. Will definitely be calling them again.",
-    service: "AC Repair",
-    initials: "ML",
-  },
-  {
-    name: "Deon P.",
-    location: "Winter Park, FL",
-    text: "PurpleAir cleaned our ductwork and the difference in air quality was immediate. My wife has allergies and she noticed it the same day. Super thorough job — they showed us before and after photos of the ducts. Really impressive.",
-    service: "Duct Cleaning",
-    initials: "DP",
-  },
-  {
-    name: "Sandra K.",
-    location: "Sanford, FL",
-    text: "Used their financing option to replace my old unit and it was seamless. The team walked me through everything and never made me feel pressured. New system has cut my electric bill noticeably. Couldn't be happier with the experience.",
-    service: "New System Installation",
-    initials: "SK",
-  },
-];
-
-const serviceOptions = [
-  "AC Repair",
-  "Heating Repair",
-  "New AC Installation",
-  "New Heating System",
-  "Preventative Maintenance",
-  "Duct Cleaning",
-  "Emergency Service",
-  "Free Estimate",
-];
-
-const timeWindows = [
-  "8:00 AM – 10:00 AM",
-  "10:00 AM – 12:00 PM",
-  "12:00 PM – 2:00 PM",
-  "2:00 PM – 4:00 PM",
-  "4:00 PM – 6:00 PM",
-  "Flexible / First Available",
-];
+};
 
 const galleryItems = [
   { image: "/gallery/1.jpg", label: "AC Installation", category: "Installation" },
@@ -228,6 +303,8 @@ export default function Home() {
   const [step, setStep] = useState(1);
   const [submitted, setSubmitted] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [lang, setLang] = useState<Lang>("en");
+  const t = translations[lang];
   const [formData, setFormData] = useState<FormData>({
     service: "",
     date: "",
@@ -264,16 +341,27 @@ export default function Home() {
 
           {/* Desktop links */}
           <div className="hidden md:flex items-center gap-7 text-sm text-slate-300">
-            <a href="#services" className="hover:text-white transition-colors">Services</a>
-            <a href="#why-us" className="hover:text-white transition-colors">Why Us</a>
-            <a href="#gallery" className="hover:text-white transition-colors">Gallery</a>
-            <a href="#reviews" className="hover:text-white transition-colors">Reviews</a>
-            <a href="#service-area" className="hover:text-white transition-colors">Service Area</a>
-            <a href="#booking" className="hover:text-white transition-colors">Book Service</a>
+            <a href="#services"     className="hover:text-white transition-colors">{t.nav.services}</a>
+            <a href="#why-us"       className="hover:text-white transition-colors">{t.nav.whyUs}</a>
+            <a href="#gallery"      className="hover:text-white transition-colors">{t.nav.gallery}</a>
+            <a href="#reviews"      className="hover:text-white transition-colors">{t.nav.reviews}</a>
+            <a href="#service-area" className="hover:text-white transition-colors">{t.nav.serviceArea}</a>
+            <a href="#booking"      className="hover:text-white transition-colors">{t.nav.book}</a>
           </div>
 
           {/* Right side */}
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2">
+            {/* Language toggle */}
+            <button
+              onClick={() => setLang(lang === "en" ? "es" : "en")}
+              className="flex items-center gap-1 px-3 py-1.5 rounded-lg text-xs font-bold transition-all border"
+              style={{
+                background: "rgba(124,58,237,0.12)",
+                borderColor: "rgba(167,139,250,0.25)",
+                color: "#a78bfa",
+              }}>
+              {lang === "en" ? "🇺🇸 EN" : "🇪🇸 ES"}
+            </button>
             <a href="tel:+14074584032"
               className="hidden md:flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-semibold text-white transition-all hover:scale-105"
               style={{ background: "linear-gradient(135deg,#7c3aed,#3b82f6)" }}>
@@ -298,12 +386,12 @@ export default function Home() {
           <div className="md:hidden border-t px-5 py-4 flex flex-col gap-1"
             style={{ borderColor: "rgba(167,139,250,0.15)", background: "rgba(15,10,30,0.98)" }}>
             {[
-              { href: "#services", label: "Services" },
-              { href: "#why-us", label: "Why Us" },
-              { href: "#gallery", label: "Gallery" },
-              { href: "#reviews", label: "Reviews" },
-              { href: "#service-area", label: "Service Area" },
-              { href: "#booking", label: "Book Service" },
+              { href: "#services",     label: t.nav.services },
+              { href: "#why-us",       label: t.nav.whyUs },
+              { href: "#gallery",      label: t.nav.gallery },
+              { href: "#reviews",      label: t.nav.reviews },
+              { href: "#service-area", label: t.nav.serviceArea },
+              { href: "#booking",      label: t.nav.book },
             ].map(({ href, label }) => (
               <a key={href} href={href}
                 onClick={() => setMenuOpen(false)}
@@ -350,19 +438,18 @@ export default function Home() {
               color: "#a78bfa",
             }}>
             <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
-            Financing Available — 0% APR for Qualified Customers
+            {t.hero.badge}
           </div>
 
           <h1 className="text-4xl sm:text-6xl md:text-7xl font-black text-white leading-tight mb-6 tracking-tight">
-            Fast &amp; Reliable<br />
-            <span className="text-gradient">HVAC Service</span>
+            {t.hero.h1a}<br />
+            <span className="text-gradient">{t.hero.h1b}</span>
           </h1>
           <p className="text-lg md:text-2xl font-light mb-4" style={{ color: "rgba(255,255,255,0.75)" }}>
-            Book Online in Minutes
+            {t.hero.sub}
           </p>
           <p className="text-sm md:text-lg max-w-2xl mx-auto mb-10 leading-relaxed px-2" style={{ color: "rgba(255,255,255,0.55)" }}>
-            Expert Repairs · New Installations · Preventative Maintenance · Duct Cleaning<br />
-            Licensed &amp; Insured Technicians Serving Central Florida
+            {t.hero.desc1}<br />{t.hero.desc2}
           </p>
 
           <div className="flex flex-col items-stretch sm:flex-row sm:items-center justify-center gap-3 w-full sm:w-auto px-2 sm:px-0">
@@ -370,7 +457,7 @@ export default function Home() {
               className="group flex items-center justify-center gap-3 px-8 py-4 rounded-xl text-white font-bold text-lg transition-all hover:scale-105 hover:shadow-[0_0_40px_rgba(124,58,237,0.4)]"
               style={{ background: "linear-gradient(135deg,#7c3aed,#3b82f6)" }}>
               <CalendarIcon />
-              Schedule Service
+              {t.hero.scheduleBtn}
             </button>
             <a href="tel:+14074584032"
               className="flex items-center justify-center gap-3 px-8 py-4 rounded-xl font-bold text-lg transition-all hover:scale-105 border"
@@ -380,16 +467,16 @@ export default function Home() {
                 background: "rgba(147,197,253,0.08)",
               }}>
               <PhoneIcon />
-              Call Now
+              {t.hero.callBtn}
             </a>
           </div>
 
           {/* Quick trust row */}
           <div className="mt-12 flex flex-wrap items-center justify-center gap-4 text-sm" style={{ color: "rgba(255,255,255,0.5)" }}>
-            {["Licensed & Insured", "Same-Day Available", "Free Estimates", "5-Star Rated"].map((t) => (
-              <div key={t} className="flex items-center gap-2">
+            {t.hero.trust.map((item) => (
+              <div key={item} className="flex items-center gap-2">
                 <span className="text-green-400"><CheckIcon /></span>
-                <span>{t}</span>
+                <span>{item}</span>
               </div>
             ))}
           </div>
@@ -404,21 +491,19 @@ export default function Home() {
       <section id="services" className="py-16 md:py-28 px-5 md:px-6">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-10 md:mb-16">
-            <p className="text-sm font-semibold uppercase tracking-widest mb-3" style={{ color: "#a78bfa" }}>What We Do</p>
-            <h2 className="text-4xl md:text-5xl font-black text-white mb-4">Complete HVAC Solutions</h2>
-            <p className="text-lg max-w-2xl mx-auto" style={{ color: "rgba(255,255,255,0.5)" }}>
-              From emergency repairs to full system replacements, our certified technicians handle every aspect of your home comfort.
-            </p>
+            <p className="text-sm font-semibold uppercase tracking-widest mb-3" style={{ color: "#a78bfa" }}>{t.services.label}</p>
+            <h2 className="text-4xl md:text-5xl font-black text-white mb-4">{t.services.title}</h2>
+            <p className="text-lg max-w-2xl mx-auto" style={{ color: "rgba(255,255,255,0.5)" }}>{t.services.desc}</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {services.map((s) => (
+            {t.services.items.map((s, i) => (
               <div key={s.title}
-                className={`group rounded-2xl p-7 border transition-all duration-300 cursor-default bg-gradient-to-br ${s.color} ${s.glow} hover:-translate-y-1`}
+                className={`group rounded-2xl p-7 border transition-all duration-300 cursor-default bg-gradient-to-br ${servicesMeta[i].color} ${servicesMeta[i].glow} hover:-translate-y-1`}
                 style={{ borderColor: "rgba(167,139,250,0.15)" }}>
                 <div className="w-14 h-14 rounded-xl flex items-center justify-center mb-5"
                   style={{ background: "rgba(124,58,237,0.2)", color: "#a78bfa" }}>
-                  {s.icon}
+                  {servicesMeta[i].icon}
                 </div>
                 <h3 className="text-xl font-bold text-white mb-3">{s.title}</h3>
                 <p className="text-sm leading-relaxed" style={{ color: "rgba(255,255,255,0.6)" }}>{s.desc}</p>
@@ -433,22 +518,20 @@ export default function Home() {
         style={{ background: "linear-gradient(180deg, transparent, rgba(46,16,101,0.15), transparent)" }}>
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-10 md:mb-16">
-            <p className="text-sm font-semibold uppercase tracking-widest mb-3" style={{ color: "#93c5fd" }}>Why PurpleAir</p>
-            <h2 className="text-4xl md:text-5xl font-black text-white mb-4">Built on Trust &amp; Results</h2>
-            <p className="text-lg max-w-xl mx-auto" style={{ color: "rgba(255,255,255,0.5)" }}>
-              We don't just fix HVAC systems — we build long-term relationships with homeowners who deserve reliable service.
-            </p>
+            <p className="text-sm font-semibold uppercase tracking-widest mb-3" style={{ color: "#93c5fd" }}>{t.whyUs.label}</p>
+            <h2 className="text-4xl md:text-5xl font-black text-white mb-4">{t.whyUs.title}</h2>
+            <p className="text-lg max-w-xl mx-auto" style={{ color: "rgba(255,255,255,0.5)" }}>{t.whyUs.desc}</p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
-            {trustBlocks.map((b) => (
+            {t.whyUs.items.map((b, i) => (
               <div key={b.title}
                 className="rounded-2xl p-6 md:p-8 text-center border transition-all hover:-translate-y-1 hover:shadow-[0_0_30px_rgba(167,139,250,0.15)]"
                 style={{
                   background: "rgba(255,255,255,0.03)",
                   borderColor: "rgba(167,139,250,0.15)",
                 }}>
-                <div className="text-4xl mb-4">{b.icon}</div>
+                <div className="text-4xl mb-4">{trustMeta[i]}</div>
                 <h3 className="text-lg font-bold text-white mb-3">{b.title}</h3>
                 <p className="text-sm leading-relaxed" style={{ color: "rgba(255,255,255,0.55)" }}>{b.desc}</p>
               </div>
@@ -461,11 +544,9 @@ export default function Home() {
       <section id="reviews" className="py-16 md:py-24 px-5 md:px-6">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-10 md:mb-16">
-            <p className="text-sm font-semibold uppercase tracking-widest mb-3" style={{ color: "#a78bfa" }}>Customer Reviews</p>
-            <h2 className="text-4xl md:text-5xl font-black text-white mb-4">Trusted Across Central Florida</h2>
-            <p className="text-lg max-w-2xl mx-auto" style={{ color: "rgba(255,255,255,0.5)" }}>
-              From Orlando to Tampa — homeowners across the region trust PurpleAir to keep their families cool and comfortable.
-            </p>
+            <p className="text-sm font-semibold uppercase tracking-widest mb-3" style={{ color: "#a78bfa" }}>{t.reviews.label}</p>
+            <h2 className="text-4xl md:text-5xl font-black text-white mb-4">{t.reviews.title}</h2>
+            <p className="text-lg max-w-2xl mx-auto" style={{ color: "rgba(255,255,255,0.5)" }}>{t.reviews.desc}</p>
             {/* Overall rating row */}
             <div className="inline-flex items-center gap-3 mt-8 px-6 py-3 rounded-2xl border"
               style={{
@@ -476,13 +557,13 @@ export default function Home() {
                 {[...Array(5)].map((_, i) => <StarIcon key={i} />)}
               </div>
               <span className="text-white font-black text-xl">5.0</span>
-              <span className="text-sm" style={{ color: "rgba(255,255,255,0.45)" }}>· 200+ Google Reviews</span>
+              <span className="text-sm" style={{ color: "rgba(255,255,255,0.45)" }}>· {t.reviews.ratingText}</span>
             </div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-            {testimonials.map((t) => (
-              <div key={t.name}
+            {t.reviews.items.map((r) => (
+              <div key={r.name}
                 className="rounded-2xl p-7 border flex flex-col transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_30px_rgba(167,139,250,0.18)]"
                 style={{
                   background: "rgba(255,255,255,0.03)",
@@ -493,11 +574,11 @@ export default function Home() {
                   <div className="flex items-center gap-3">
                     <div className="w-10 h-10 rounded-full flex items-center justify-center text-sm font-black text-white flex-shrink-0"
                       style={{ background: "linear-gradient(135deg,#7c3aed,#3b82f6)" }}>
-                      {t.initials}
+                      {r.initials}
                     </div>
                     <div>
-                      <p className="font-bold text-white text-sm">{t.name}</p>
-                      <p className="text-xs" style={{ color: "#a78bfa" }}>{t.location}</p>
+                      <p className="font-bold text-white text-sm">{r.name}</p>
+                      <p className="text-xs" style={{ color: "#a78bfa" }}>{r.location}</p>
                     </div>
                   </div>
                   {/* Google G */}
@@ -514,7 +595,7 @@ export default function Home() {
                 </div>
                 {/* Review text */}
                 <p className="text-sm leading-relaxed flex-1 mb-5" style={{ color: "rgba(255,255,255,0.7)" }}>
-                  &ldquo;{t.text}&rdquo;
+                  &ldquo;{r.text}&rdquo;
                 </p>
                 {/* Service tag */}
                 <div className="inline-flex self-start">
@@ -524,7 +605,7 @@ export default function Home() {
                       borderColor: "rgba(167,139,250,0.2)",
                       color: "#a78bfa",
                     }}>
-                    {t.service}
+                    {r.service}
                   </span>
                 </div>
               </div>
@@ -538,20 +619,18 @@ export default function Home() {
         style={{ background: "linear-gradient(180deg, transparent, rgba(46,16,101,0.12), transparent)" }}>
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-10 md:mb-16">
-            <p className="text-sm font-semibold uppercase tracking-widest mb-3" style={{ color: "#93c5fd" }}>Our Work</p>
-            <h2 className="text-4xl md:text-5xl font-black text-white mb-4">See the PurpleAir Difference</h2>
-            <p className="text-lg max-w-2xl mx-auto" style={{ color: "rgba(255,255,255,0.5)" }}>
-              From emergency repairs to full system installs — every job gets the same meticulous attention to detail.
-            </p>
+            <p className="text-sm font-semibold uppercase tracking-widest mb-3" style={{ color: "#93c5fd" }}>{t.gallery.label}</p>
+            <h2 className="text-4xl md:text-5xl font-black text-white mb-4">{t.gallery.title}</h2>
+            <p className="text-lg max-w-2xl mx-auto" style={{ color: "rgba(255,255,255,0.5)" }}>{t.gallery.desc}</p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            {galleryItems.map((item, i) => (
+            {t.gallery.items.map((item, i) => (
               <div key={i}
                 className="group relative rounded-2xl overflow-hidden border aspect-[4/3] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_40px_rgba(167,139,250,0.25)]"
                 style={{ borderColor: "rgba(167,139,250,0.15)", background: "#0f0a1e" }}>
                 <img
-                  src={item.image}
+                  src={`/gallery/${i + 1}.jpg`}
                   alt={item.label}
                   className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                 />
@@ -576,12 +655,9 @@ export default function Home() {
 
           {/* Header */}
           <div className="text-center mb-10 md:mb-16">
-            <p className="text-sm font-semibold uppercase tracking-widest mb-3" style={{ color: "#a78bfa" }}>Where We Work</p>
-            <h2 className="text-4xl md:text-5xl font-black text-white mb-4">Serving Central Florida</h2>
-            <p className="text-lg max-w-2xl mx-auto" style={{ color: "rgba(255,255,255,0.5)" }}>
-              PurpleAir Services covers the entire Central Florida region — from the coast to the heartland.
-              If you're in the area, we've got you covered.
-            </p>
+            <p className="text-sm font-semibold uppercase tracking-widest mb-3" style={{ color: "#a78bfa" }}>{t.serviceArea.label}</p>
+            <h2 className="text-4xl md:text-5xl font-black text-white mb-4">{t.serviceArea.title}</h2>
+            <p className="text-lg max-w-2xl mx-auto" style={{ color: "rgba(255,255,255,0.5)" }}>{t.serviceArea.desc}</p>
           </div>
 
           {/* County cards */}
@@ -672,9 +748,9 @@ export default function Home() {
             <div className="flex items-center gap-3">
               <span className="w-2.5 h-2.5 rounded-full bg-green-400 animate-pulse flex-shrink-0" />
               <p className="text-white font-semibold">
-                Don't see your city?{" "}
+                {t.serviceArea.ctaMain}{" "}
                 <span style={{ color: "rgba(255,255,255,0.55)" }} className="font-normal">
-                  Call us — we likely service your area.
+                  {t.serviceArea.ctaSub}
                 </span>
               </p>
             </div>
@@ -694,11 +770,9 @@ export default function Home() {
         style={{ background: "linear-gradient(180deg, transparent, rgba(46,16,101,0.2), transparent)" }}>
         <div className="max-w-2xl mx-auto">
           <div className="text-center mb-12">
-            <p className="text-sm font-semibold uppercase tracking-widest mb-3" style={{ color: "#93c5fd" }}>Get Started</p>
-            <h2 className="text-4xl md:text-5xl font-black text-white mb-4">Request Your Appointment</h2>
-            <p className="text-lg" style={{ color: "rgba(255,255,255,0.5)" }}>
-              Takes less than 2 minutes. No commitment required.
-            </p>
+            <p className="text-sm font-semibold uppercase tracking-widest mb-3" style={{ color: "#93c5fd" }}>{t.booking.label}</p>
+            <h2 className="text-4xl md:text-5xl font-black text-white mb-4">{t.booking.title}</h2>
+            <p className="text-lg" style={{ color: "rgba(255,255,255,0.5)" }}>{t.booking.desc}</p>
           </div>
 
           {/* Form card */}
@@ -714,11 +788,9 @@ export default function Home() {
                 {/* Step indicator */}
                 <div className="px-8 pt-8 pb-6 border-b" style={{ borderColor: "rgba(167,139,250,0.15)" }}>
                   <div className="flex items-center justify-between">
-                    {[
-                      { n: 1, label: "Service" },
-                      { n: 2, label: "Schedule" },
-                      { n: 3, label: "Contact" },
-                    ].map(({ n, label }, idx) => (
+                    {t.booking.steps.map((label, idx) => {
+                      const n = idx + 1;
+                      return (
                       <div key={n} className="flex items-center flex-1">
                         <div className="flex flex-col items-center">
                           <div className={`w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold transition-all ${
@@ -738,7 +810,8 @@ export default function Home() {
                             style={{ background: step > n ? "#22c55e" : "rgba(167,139,250,0.2)" }} />
                         )}
                       </div>
-                    ))}
+                    );
+                    })}
                   </div>
                 </div>
 
@@ -747,10 +820,10 @@ export default function Home() {
                   {/* STEP 1 */}
                   {step === 1 && (
                     <div>
-                      <h3 className="text-2xl font-bold text-white mb-2">What do you need help with?</h3>
-                      <p className="text-sm mb-8" style={{ color: "rgba(255,255,255,0.5)" }}>Select the service that best describes your situation.</p>
+                      <h3 className="text-2xl font-bold text-white mb-2">{t.booking.step1Title}</h3>
+                      <p className="text-sm mb-8" style={{ color: "rgba(255,255,255,0.5)" }}>{t.booking.step1Sub}</p>
                       <div className="grid grid-cols-2 gap-3">
-                        {serviceOptions.map((opt) => (
+                        {t.booking.serviceOptions.map((opt) => (
                           <button key={opt} type="button"
                             onClick={() => setFormData({ ...formData, service: opt })}
                             className={`px-4 py-3 rounded-xl text-sm font-medium text-left transition-all border ${
@@ -770,7 +843,7 @@ export default function Home() {
                         onClick={() => setStep(2)}
                         className="w-full mt-8 py-4 rounded-xl font-bold text-white text-lg transition-all disabled:opacity-40 disabled:cursor-not-allowed hover:scale-[1.02] hover:shadow-[0_0_30px_rgba(124,58,237,0.3)]"
                         style={{ background: "linear-gradient(135deg,#7c3aed,#3b82f6)" }}>
-                        Continue →
+                        {t.booking.continueBtn}
                       </button>
                     </div>
                   )}
@@ -778,11 +851,11 @@ export default function Home() {
                   {/* STEP 2 */}
                   {step === 2 && (
                     <div>
-                      <h3 className="text-2xl font-bold text-white mb-2">When do you need service?</h3>
-                      <p className="text-sm mb-8" style={{ color: "rgba(255,255,255,0.5)" }}>Choose your preferred date and arrival window.</p>
+                      <h3 className="text-2xl font-bold text-white mb-2">{t.booking.step2Title}</h3>
+                      <p className="text-sm mb-8" style={{ color: "rgba(255,255,255,0.5)" }}>{t.booking.step2Sub}</p>
                       <div className="space-y-5">
                         <div>
-                          <label className="block text-sm font-medium text-slate-300 mb-2">Preferred Date</label>
+                          <label className="block text-sm font-medium text-slate-300 mb-2">{t.booking.dateLabel}</label>
                           <input type="date"
                             value={formData.date}
                             min={new Date().toISOString().split("T")[0]}
@@ -795,7 +868,7 @@ export default function Home() {
                             }} />
                         </div>
                         <div>
-                          <label className="block text-sm font-medium text-slate-300 mb-2">Preferred Arrival Window</label>
+                          <label className="block text-sm font-medium text-slate-300 mb-2">{t.booking.windowLabel}</label>
                           <select value={formData.timeWindow}
                             onChange={(e) => setFormData({ ...formData, timeWindow: e.target.value })}
                             className="w-full px-4 py-3 rounded-xl text-white text-sm outline-none focus:ring-2 focus:ring-purple-500 transition-all border"
@@ -804,8 +877,8 @@ export default function Home() {
                               borderColor: "rgba(167,139,250,0.2)",
                               colorScheme: "dark",
                             }}>
-                            <option value="">Select a time window...</option>
-                            {timeWindows.map((tw) => (
+                            <option value="">{t.booking.windowPlaceholder}</option>
+                            {t.booking.timeWindows.map((tw) => (
                               <option key={tw} value={tw}>{tw}</option>
                             ))}
                           </select>
@@ -815,14 +888,14 @@ export default function Home() {
                         <button type="button" onClick={() => setStep(1)}
                           className="flex-1 py-4 rounded-xl font-semibold text-slate-400 transition-all hover:text-white border"
                           style={{ background: "rgba(255,255,255,0.03)", borderColor: "rgba(167,139,250,0.15)" }}>
-                          ← Back
+                          {t.booking.backBtn}
                         </button>
                         <button type="button"
                           disabled={!formData.date || !formData.timeWindow}
                           onClick={() => setStep(3)}
                           className="flex-[2] py-4 rounded-xl font-bold text-white text-lg transition-all disabled:opacity-40 disabled:cursor-not-allowed hover:scale-[1.02] hover:shadow-[0_0_30px_rgba(124,58,237,0.3)]"
                           style={{ background: "linear-gradient(135deg,#7c3aed,#3b82f6)" }}>
-                          Continue →
+                          {t.booking.continueBtn}
                         </button>
                       </div>
                     </div>
@@ -831,15 +904,10 @@ export default function Home() {
                   {/* STEP 3 */}
                   {step === 3 && (
                     <div>
-                      <h3 className="text-2xl font-bold text-white mb-2">How should we contact you?</h3>
-                      <p className="text-sm mb-8" style={{ color: "rgba(255,255,255,0.5)" }}>We'll send a confirmation and reach out to confirm your appointment.</p>
+                      <h3 className="text-2xl font-bold text-white mb-2">{t.booking.step3Title}</h3>
+                      <p className="text-sm mb-8" style={{ color: "rgba(255,255,255,0.5)" }}>{t.booking.step3Sub}</p>
                       <div className="space-y-4">
-                        {[
-                          { label: "Full Name", key: "fullName", type: "text", placeholder: "John Smith" },
-                          { label: "Phone Number", key: "phone", type: "tel", placeholder: "(555) 000-0000" },
-                          { label: "Email Address", key: "email", type: "email", placeholder: "john@example.com" },
-                          { label: "Zip Code", key: "zipCode", type: "text", placeholder: "77001" },
-                        ].map(({ label, key, type, placeholder }) => (
+                        {t.booking.fields.map(({ label, key, type, placeholder }) => (
                           <div key={key}>
                             <label className="block text-sm font-medium text-slate-300 mb-2">{label}</label>
                             <input type={type} placeholder={placeholder}
@@ -854,9 +922,9 @@ export default function Home() {
                         ))}
                         <div>
                           <label className="block text-sm font-medium text-slate-300 mb-2">
-                            Message <span className="text-slate-600">(optional)</span>
+                            {t.booking.msgLabel} <span className="text-slate-600">{t.booking.msgOptional}</span>
                           </label>
-                          <textarea placeholder="Describe the issue, system age, or any other details that would help our technician..."
+                          <textarea placeholder={t.booking.msgPlaceholder}
                             value={formData.message}
                             onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                             rows={4}
@@ -871,17 +939,17 @@ export default function Home() {
                         <button type="button" onClick={() => setStep(2)}
                           className="flex-1 py-4 rounded-xl font-semibold text-slate-400 transition-all hover:text-white border"
                           style={{ background: "rgba(255,255,255,0.03)", borderColor: "rgba(167,139,250,0.15)" }}>
-                          ← Back
+                          {t.booking.backBtn}
                         </button>
                         <button type="submit"
                           disabled={!formData.fullName || !formData.phone || !formData.email || !formData.zipCode}
                           className="flex-[2] py-4 rounded-xl font-bold text-white text-lg transition-all disabled:opacity-40 disabled:cursor-not-allowed hover:scale-[1.02] hover:shadow-[0_0_30px_rgba(124,58,237,0.4)]"
                           style={{ background: "linear-gradient(135deg,#7c3aed,#3b82f6)" }}>
-                          Request Appointment
+                          {t.booking.submitBtn}
                         </button>
                       </div>
                       <p className="text-xs text-center mt-4" style={{ color: "rgba(255,255,255,0.3)" }}>
-                        No payment required. We'll contact you to confirm within 1 business hour.
+                        {t.booking.disclaimer}
                       </p>
                     </div>
                   )}
@@ -896,12 +964,12 @@ export default function Home() {
                     <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
                   </svg>
                 </div>
-                <h3 className="text-3xl font-black text-white mb-3">Request Received!</h3>
+                <h3 className="text-3xl font-black text-white mb-3">{t.booking.successTitle}</h3>
                 <p className="text-lg mb-2" style={{ color: "rgba(255,255,255,0.7)" }}>
-                  Thanks, <strong className="text-white">{formData.fullName.split(" ")[0]}</strong>. We've got your appointment request.
+                  {t.booking.successMsg1} <strong className="text-white">{formData.fullName.split(" ")[0]}</strong>. {t.booking.successMsg2}
                 </p>
                 <p className="text-sm mb-8" style={{ color: "rgba(255,255,255,0.45)" }}>
-                  A member of our team will call you at {formData.phone} within 1 business hour to confirm your appointment for <strong className="text-white">{formData.date}</strong>.
+                  {t.booking.successMsg3} {formData.phone} {t.booking.successMsg4} <strong className="text-white">{formData.date}</strong>.
                 </p>
                 <div className="inline-flex items-center gap-3 px-6 py-3 rounded-xl border text-sm"
                   style={{
@@ -910,7 +978,7 @@ export default function Home() {
                     color: "#a78bfa",
                   }}>
                   <PhoneIcon />
-                  Questions? Call us: (407) 458-4032
+                  {t.booking.successCall} (407) 458-4032
                 </div>
               </div>
             )}
@@ -929,18 +997,18 @@ export default function Home() {
           <div className="absolute inset-0 pointer-events-none"
             style={{ background: "radial-gradient(ellipse at center, rgba(124,58,237,0.12) 0%, transparent 70%)" }} />
           <div className="relative z-10">
-            <p className="text-sm font-semibold uppercase tracking-widest mb-4" style={{ color: "#a78bfa" }}>Ready to Get Started?</p>
+            <p className="text-sm font-semibold uppercase tracking-widest mb-4" style={{ color: "#a78bfa" }}>{t.cta.label}</p>
             <h2 className="text-4xl md:text-5xl font-black text-white mb-6 leading-tight">
-              Ready for Fast, Professional<br />
-              <span className="text-gradient">HVAC Service?</span>
+              {t.cta.title1}<br />
+              <span className="text-gradient">{t.cta.title2}</span>
             </h2>
             <p className="text-lg max-w-xl mx-auto mb-10" style={{ color: "rgba(255,255,255,0.55)" }}>
-              Join thousands of homeowners who trust PurpleAir for all their heating and cooling needs. Your free estimate is just one click away.
+              {t.cta.desc}
             </p>
             <button onClick={scrollToForm}
               className="px-10 py-5 rounded-xl font-black text-white text-xl transition-all hover:scale-105 hover:shadow-[0_0_50px_rgba(124,58,237,0.5)]"
               style={{ background: "linear-gradient(135deg,#7c3aed,#3b82f6)" }}>
-              Book Your Free Estimate
+              {t.cta.btn}
             </button>
           </div>
         </div>
@@ -957,13 +1025,13 @@ export default function Home() {
                 <span className="font-bold text-white text-xl">PurpleAir<span className="text-gradient"> Services</span></span>
               </div>
               <p className="text-sm leading-relaxed" style={{ color: "rgba(255,255,255,0.45)" }}>
-                Your trusted local HVAC professionals. We keep your home comfortable year-round with fast, reliable, and affordable service.
+                {t.footer.tagline}
               </p>
             </div>
 
             {/* Contact */}
             <div>
-              <h4 className="font-bold text-white mb-5">Contact Us</h4>
+              <h4 className="font-bold text-white mb-5">{t.footer.contactTitle}</h4>
               <div className="space-y-3 text-sm" style={{ color: "rgba(255,255,255,0.55)" }}>
                 <div className="flex items-center gap-2">
                   <PhoneIcon />
@@ -980,9 +1048,9 @@ export default function Home() {
 
             {/* Service Area */}
             <div>
-              <h4 className="font-bold text-white mb-5">Service Area</h4>
+              <h4 className="font-bold text-white mb-5">{t.footer.serviceAreaTitle}</h4>
               <p className="text-sm leading-relaxed" style={{ color: "rgba(255,255,255,0.55)" }}>
-                Orange, Seminole, Osceola, Polk, Lake & Volusia Counties — including Orlando, Kissimmee, Sanford, Apopka, Clermont, and surrounding Central Florida communities.
+                {t.footer.serviceAreaText}
               </p>
               <div className="mt-4 inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs border"
                 style={{
@@ -991,15 +1059,15 @@ export default function Home() {
                   color: "#4ade80",
                 }}>
                 <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
-                Now Accepting New Customers
+                {t.footer.accepting}
               </div>
             </div>
           </div>
 
           <div className="border-t pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs"
             style={{ borderColor: "rgba(167,139,250,0.1)", color: "rgba(255,255,255,0.3)" }}>
-            <p>© {new Date().getFullYear()} PurpleAir HVAC. All rights reserved.</p>
-            <p>Licensed · Bonded · Insured | ROC #000000</p>
+            <p>© {new Date().getFullYear()} PurpleAir Services. {t.footer.rights}</p>
+            <p>{t.footer.license}</p>
           </div>
         </div>
       </footer>
