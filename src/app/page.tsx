@@ -255,8 +255,9 @@ export default function Home() {
       <nav className="fixed top-0 left-0 right-0 z-50 backdrop-blur-md border-b border-purple-900/30"
         style={{ background: "rgba(15,10,30,0.85)" }}>
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-          <div className="flex items-center">
+          <div className="flex items-center gap-3">
             <img src="/logo.jpg" alt="PurpleAir HVAC Logo" className="h-12 w-auto object-contain" />
+            <span className="font-bold text-white text-lg tracking-tight">PurpleAir<span className="text-gradient"> Services</span></span>
           </div>
           <div className="hidden md:flex items-center gap-8 text-sm text-slate-300">
             <a href="#services" className="hover:text-white transition-colors">Services</a>
@@ -779,8 +780,9 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
             {/* Brand */}
             <div>
-              <div className="mb-4">
+              <div className="flex items-center gap-3 mb-4">
                 <img src="/logo.jpg" alt="PurpleAir HVAC Logo" className="h-14 w-auto object-contain" />
+                <span className="font-bold text-white text-xl">PurpleAir<span className="text-gradient"> Services</span></span>
               </div>
               <p className="text-sm leading-relaxed" style={{ color: "rgba(255,255,255,0.45)" }}>
                 Your trusted local HVAC professionals. We keep your home comfortable year-round with fast, reliable, and affordable service.
