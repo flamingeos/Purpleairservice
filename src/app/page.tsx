@@ -258,7 +258,7 @@ export default function Home() {
         {/* Top bar */}
         <div className="max-w-7xl mx-auto px-5 py-3 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <img src="/logo.jpg" alt="PurpleAir HVAC Logo" className="h-10 w-auto object-contain" />
+            <img src="/logo.png" alt="PurpleAir HVAC Logo" className="h-10 w-auto object-contain" />
             <span className="font-bold text-white text-base tracking-tight">PurpleAir<span className="text-gradient"> Services</span></span>
           </div>
 
@@ -953,7 +953,7 @@ export default function Home() {
             {/* Brand */}
             <div>
               <div className="flex items-center gap-3 mb-4">
-                <img src="/logo.jpg" alt="PurpleAir HVAC Logo" className="h-14 w-auto object-contain" />
+                <img src="/logo.png" alt="PurpleAir HVAC Logo" className="h-14 w-auto object-contain" />
                 <span className="font-bold text-white text-xl">PurpleAir<span className="text-gradient"> Services</span></span>
               </div>
               <p className="text-sm leading-relaxed" style={{ color: "rgba(255,255,255,0.45)" }}>
